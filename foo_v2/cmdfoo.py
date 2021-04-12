@@ -1,4 +1,5 @@
 import data
+import random
 from collections import Counter
 
 
@@ -70,13 +71,15 @@ def CheckDocsKey(doc_for_check):
         i = 0
         counter = 0
         while i < 1:
-            key = range(1,100)
+            #key = 'new' # Сделать динамический ключ!!!!!!!! Чтобы значения сохранялись
+            # Читать значение ключа и прибавлять единицу
+            key = random.randrange(0, 101, 2)
             value = [item_num_saver]
             new_dict_for_number[key] = value
             i +=1
         #print(new_dict_for_number)
         data.directories.update(new_dict_for_number)
-        print('RESULTS EBAT',data.directories)
+        print('RESULTS',data.directories)
 
 
 def ComandHelper():
@@ -85,6 +88,8 @@ def ComandHelper():
     """
     print(" p - comand for find the owner of d")
     print(" add - use for add new informations")
+    print(" show doc - watch document")
+    print(" shwo d - watch directorias")
     print(" q - exit from add")
     CmdLine()
 
@@ -120,7 +125,9 @@ def ShowDocs():
     print(data.documents)
     CmdLine()
 
-def counter():
+def counter(i):
     """
     key generators
     """
+    i + 1
+    return i
