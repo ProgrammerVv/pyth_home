@@ -20,6 +20,8 @@ def CmdLine():
         ShowDiraddectories()
     elif (user_cmd == "show doc"):
         ShowDocs()
+    elif (user_cmd == "s"):
+        DocFindIndir(data.directories)
     else:
         print("Command not found, try again or use command h for help")
         CmdLine()
@@ -45,7 +47,6 @@ def DocAdd():
         else:
             break
 
-    print(type(new_info))
     Addnewinfotodocs(new_info)
     CmdLine()
     return new_info
@@ -109,6 +110,25 @@ def DocOwner(dictionaryForFind):
 
     CmdLine()
 
+def DocFindIndir(dirforfind):
+    """
+    Find the docs in dir
+    """
+    Doc_number_in_dir = (input("Input the doc number without s : "))
+    print ('perehod was')
+    print(dirforfind)
+    print(dirforfind.values())
+    listed_doc = list(Doc_number_in_dir)
+    print(listed_doc)
+
+    for k,v in dirforfind.items():
+        if listed_doc == v:
+            print('Polka :',k)
+        else:
+            print('Doc not found!')
+
+    CmdLine()
+
 def Exit():
     print('Have a nice day!')
 
@@ -129,3 +149,6 @@ def counter(i):
     """
     i + 1
     return i
+
+
+#hotelos bi
