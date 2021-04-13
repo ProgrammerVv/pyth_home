@@ -11,7 +11,7 @@ def CmdLine():
     if (user_cmd == "h"):
         ComandHelper()
     elif (user_cmd == "p"):
-        DocOwner()
+        DocOwner(data.documents)
     elif (user_cmd == "add"):
         DocAdd()
     elif (user_cmd == "exit"):
@@ -94,22 +94,20 @@ def ComandHelper():
     CmdLine()
 
 
-def DocOwner():
+def DocOwner(dictionaryForFind):
     """
     Find the docs owner
     """
     Doc_number = (input("Input the doc number without s : "))
-    print('finded')
-    # Проверить наличие определенного ключа можно при помощи операции in. Для этого достаточно вывести результат ее выполнения для словаря по имени a.
+    print ('perehod was')
 
-    # a = {1: "one", 2: "two", 3: "three"}
-    # print(2 in a)
-    # print(4 in a)
+    finded  = next(item for item in dictionaryForFind if item["number"] == Doc_number)
+    if finded == None:
+        print("No founded")
+    else:
+        print('Owner doc name: ',finded['name'])
 
-    # True
-    # False
-    # https://all-python.ru/osnovy/slovari.html
-
+    CmdLine()
 
 def Exit():
     print('Have a nice day!')
