@@ -12,16 +12,22 @@ def CmdLine():
         ComandHelper()
     elif (user_cmd == "p"):
         DocOwner(data.documents)
-    elif (user_cmd == "add"):
+    elif(user_cmd == "add"):
         DocAdd()
-    elif (user_cmd == "exit"):
+    elif(user_cmd == "exit"):
         Exit()
-    elif (user_cmd == "show d"):
+    elif(user_cmd == "show d"):
         ShowDiraddectories()
-    elif (user_cmd == "show doc"):
+    elif(user_cmd == "show doc"):
         ShowDocs()
-    elif (user_cmd == "s"):
+    elif(user_cmd == "l"):
+        ShowAllDocs()
+    elif(user_cmd == "s"):
         DocFindIndir(data.directories)
+    elif(user_cmd == 'as'):
+        AddPolkatodir(data.directories)
+    elif (user_cmd == 'ds'):
+        DelPolkatodir(data.directories)
     else:
         print("Command not found, try again or use command h for help")
         CmdLine()
@@ -92,8 +98,51 @@ def ComandHelper():
     print(" show doc - watch document")
     print(" shwo d - watch directorias")
     print(" q - exit from add")
+    print(" as - add polka to dir")
+    print(" ds - del polka to dir")
+    print(" l - show dir")
     CmdLine()
 
+def ShowAllDocs():
+    """
+        Show all doc in sort of number
+    """
+    print(data.documents) #Нужно сюда добавить сортировку чтоб номер был в начале, а потом все остальные параметры
+    CmdLine()
+
+
+def AddPolkatodir(directorr):
+    print(directorr)
+    polka = input('Input polka number: ')
+    i = 0
+    while i < 1:
+        key = polka
+        value = None
+        directorr[key] = value
+        i +=1
+        print('Polka added', directorr)
+    CmdLine()
+
+def DelPolkatodir(directorr):
+    print(directorr)
+    polka_for_del = input('Input polka number for del: ')
+
+    # for k,v in directorr.items():
+    #     if polka_for_del == k:
+    #         if v is None:
+    #             print('Ok go delete')
+    #             #listed_polka_for_del = str(polka_for_del)
+    #             del directorr["1"] # Сюда написать удаление и все
+    #     else:
+    #         print('i cannot delete it because polka is not None')
+    # CmdLine()
+
+    for key in list(directorr.keys()):
+        if polka_for_del == key:
+            del directorr[key]
+        else:
+            print('i cannot delete it because polka is not None')
+    CmdLine()
 
 def DocOwner(dictionaryForFind):
     """
