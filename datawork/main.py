@@ -4,3 +4,4 @@ import functions as foo
 # {‘1840e0b9d4’: ‘Продукты’, …}
 
 foo.read_from_file()
+#foo.compare_add_visit_log(purchases)
